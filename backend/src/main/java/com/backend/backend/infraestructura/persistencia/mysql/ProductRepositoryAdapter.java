@@ -21,6 +21,9 @@ public class ProductRepositoryAdapter implements ProductRepositoryPort {
     @Override
     public Producto findByCodigoProducto(String codigoProducto) {
         ProductoEntidad productoEntidad = productJPARepository.findByCodigoProducto(codigoProducto);
+        if (productoEntidad == null) {
+            return null;
+        }
         return ProductMapper.fromProductoEntidadToProducto(productoEntidad);
     }
 

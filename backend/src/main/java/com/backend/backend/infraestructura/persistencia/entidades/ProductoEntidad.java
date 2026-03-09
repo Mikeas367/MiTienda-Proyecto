@@ -49,7 +49,15 @@ public class ProductoEntidad {
         return stock;
     }
 
-    public void setCodigoProducto(String codigoProducto) {
-        this.codigoProducto = codigoProducto;
+    @Override
+    public String toString() {
+        return "ProductoEntidad{" +
+                "id=" + id +
+                ", codigoProducto='" + codigoProducto + '\'' +
+                ", nombre='" + nombre + '\'' +
+                ", precioCosto=" + precioCosto +
+                ", precioVenta=" + precioVenta +
+                ", stock=" + stock +
+                '}';
     }
 }

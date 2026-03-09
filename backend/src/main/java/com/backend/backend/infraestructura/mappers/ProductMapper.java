@@ -6,7 +6,8 @@ import com.backend.backend.infraestructura.persistencia.entidades.ProductoEntida
 public class ProductMapper {
 
     public static Producto fromProductoEntidadToProducto(ProductoEntidad productoEntidad) {
-        return  new Producto(productoEntidad.getCodigoProducto(),
+        return  new Producto(
+                productoEntidad.getCodigoProducto(),
                 productoEntidad.getNombre(),
                 productoEntidad.getPrecioCosto(),
                 productoEntidad.getPrecioVenta(),

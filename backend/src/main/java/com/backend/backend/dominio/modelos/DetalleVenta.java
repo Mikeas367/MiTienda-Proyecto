@@ -10,10 +10,9 @@ public class DetalleVenta {
         subtotal = this.producto.getPrecioVenta() * this.cantidad;
     }
 
-    public DetalleVenta(Producto producto, int cantidad, double subtotal) {
+    public DetalleVenta(Producto producto, int cantidad) {
         this.producto = producto;
         this.cantidad = cantidad;
-        this.subtotal = subtotal;
     }
 
     public DetalleVenta() {

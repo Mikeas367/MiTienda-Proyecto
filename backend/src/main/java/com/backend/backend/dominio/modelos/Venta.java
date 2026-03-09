@@ -25,10 +25,9 @@ public class Venta {
     public Venta() {
     }
 
-    public Venta(int idVenta, LocalDateTime fechaVenta, double total, List<DetalleVenta> detalleVentas) {
+    public Venta(long idVenta, LocalDateTime fechaVenta, List<DetalleVenta> detalleVentas) {
         this.idVenta = idVenta;
         this.fechaVenta = fechaVenta;
-        this.total = total;
         this.detalleVentas = detalleVentas;
     }
 
