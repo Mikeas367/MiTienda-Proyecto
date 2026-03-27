@@ -1,0 +1,122 @@
+openapi: 3.0.4
+info:
+  version: "1.0.0"
+  title: Mi Tienda API - OpenAPI 3.0
+  description: |-
+    Este es la documentacion de la API de la aplicacion "Mi Tienda", aqui se podran ver las como hacer distintas peticiones que se podran realizar al backend y como este responde.
+    
+  
+tags:
+  - name: Productos
+    description: Gestion de productos.
+  - name: Ventas
+    description: Gestion de las ventas.
+    
+
+paths:
+  /api/productos/{codigoProducto}:
+    get:
+      tags:
+        - Productos
+      summary: Trae todos los productos en forma de lista.
+      description: Trae todos los productos en forma de lista existentes de la DB.
+      parameters:
+        - name: codigoProducto
+          in: path           # Indica que el valor viene en la URL
+          required: true     # Los Path Variables siempre son obligatorios
+          description: Código único del producto (ej. PROD-123)
+          schema:
+            type: string
+          
+      responses:
+        '200':
+          description: Una lista de productos obtenida con éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Producto'
+
+  /api/productos:
+    get:
+      tags:
+        - Productos
+      summary: Trae todos los productos en forma de lista.
+      description: Trae todos los productos en forma de lista existentes de la DB.
+      responses:
+        '200':
+          description: Una lista de productos obtenida con éxito.
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Producto'
+  /api/productos/nuevo-producto:
+    put: 
+      tags:
+          - Productos
+      summary: Añade un nuevo producto.
+      description: Crea un nuevo Producto y lo almacena en la DB.
+      requestBody:
+          description: Asi se debe de ver la peticion con el Producto en el body.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Producto'
+      responses:
+        '200':
+          description: Peticion realizada con exito.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Producto'
+
+  /api/ventas/nueva-venta:
+    put:
+      tags:
+        - Ventas
+      summary: Añade una nueva venta de productos.
+      description: Genera una Venta y lo almacena en la DB.
+      requestBody:
+        description: Array de DetalleVenta que funciona como carrito para generar la compra.
+        required: true 
+        content:
+          application/json:
+            schema:
+              type: array
+              items: 
+                $ref: '#/components/schemas/DetalleVenta'
+      responses:
+        '200':
+          description: Peticion realizada con exito.
+
+components:
+  schemas:
+    DetalleVenta:
+      type: object
+      properties:
+        producto:
+          $ref: '#/components/schemas/Producto'
+        cantidad:
+          type: integer
+          example: 3
+    Producto:
+      type: object
+      properties:
+        codigoProducto:
+          type: string
+          example: "PROD-123"
+        nombre:
+          type: string
+          example: "Gaseosa 500ml"
+        precioCosto:
+          type: number
+          example: 1000.0
+        precioVenta:
+          type: number
+          example: 1500.0
+        stock:
+          type: number
+          example: 150
