@@ -18,6 +18,11 @@ export const SideBar = () =>  {
                     Productos   
                 </Link>
             </li>
+            <li className='nav-item'>
+                <Link to="/products/new-product" className='nav-link'>
+                    Nuevo Producto   
+                </Link>
+            </li>
         </ul>
         
     </div>  
