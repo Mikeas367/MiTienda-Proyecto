@@ -8,7 +8,6 @@ export const getAllProducts = async () => {
     return response
 }
 
-
 export const getByCodigoDeProducto = async (codigoDeProducto: string) => {
     const response = axios.get<Producto>(apiRoutes.PRODUCTOS.BY_CODIGO_PRODUCTO(codigoDeProducto))
     return response
@@ -16,5 +15,10 @@ export const getByCodigoDeProducto = async (codigoDeProducto: string) => {
 
 export const deleteProducto = async  (codigoDeProducto: string) => {
     const response = axios.delete(apiRoutes.PRODUCTOS.ELIMINAR_PRODUCTO(codigoDeProducto))
+    return response
+}
+
+export const nuevoProducto = async(producto : Producto) => {
+    const response = axios.post(apiRoutes.PRODUCTOS.NUEVO_PRODUCTO, producto)
     return response
 }

@@ -9,5 +9,5 @@ public interface ProductRepositoryPort {
     Producto findByCodigoProducto(String codigoProducto);
     List<Producto> getAllProductos();
     Producto nuevoProducto(Producto producto);
-
+    void eliminarProducto(String codigoProducto);
 }

@@ -44,6 +44,11 @@ public class ProductRepositoryAdapter implements ProductRepositoryPort {
         return ProductMapper.fromProductoEntidadToProducto(productoEntidadGuardado);
     }
 
+    @Override
+    public void eliminarProducto(String codigoProducto) {
+        ProductoEntidad productoEntidad = productJPARepository.findByCodigoProducto(codigoProducto);
+        productJPARepository.deleteById(productoEntidad.getId());
+    }
 
 
 }

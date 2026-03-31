@@ -1,5 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { FormularioProducto, ProductList, SideBar } from './components'
+import { FormularioProducto, FormularioVenta, ProductList, SideBar } from './components'
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import 'bootstrap/dist/js/bootstrap.bundle.min';
@@ -15,6 +15,7 @@ function App() {
           <Route path="/"element={<h1>Bienvenido</h1>}></Route>
           <Route path="/products" element={<ProductList/>}></Route>
           <Route path="/products/new-product" element={<FormularioProducto/>}></Route>
+          <Route path="/products/new-sale" element={<FormularioVenta/>}></Route>
         </Routes>
       </div>
     </Router>

@@ -6,17 +6,20 @@ import { deleteProducto, getAllProducts} from "../../services";
 
 export const ProductList = () => {
   const [products, setProducts] = useState<Producto[]>();
-  //const [error, setError] = useState<Error>();
-  //const [loading, setLoading] = useState<boolean>(true);
-  //const [productToEdit, setProductToEdit] = useState<Producto | null>(null);
+  const [error, setError] = useState<Error>();
+  const [loading, setLoading] = useState<boolean>(true);
 
   useEffect(() => {
     const fetchProducts = async () => {
       try {
         const response = await getAllProducts();
         setProducts(response.data);
-      } catch (error) {
+        
+      } catch (error: any) {
         console.log(error);
+        setError(error)
+      }finally{
+        setLoading(false)
       }
     };
     fetchProducts();
@@ -34,6 +37,20 @@ export const ProductList = () => {
       alert("No se pudo eliminar el producto");
     }
   }
+
+  if(loading){
+    return(
+      <h1>Cargando Datos...</h1>
+    )
+  }
+
+  if(error){
+    return(
+      <h1>Ocurrio un Error: {error.message}</h1>
+    )
+  }
+
+
   
   return (
         <div>
@@ -59,7 +76,8 @@ export const ProductList = () => {
                     <td>{p.precioCosto}</td>
                     <td>{p.stock}</td>
                     <td>
-                      <button className="btn btn-danger" onClick={()=> handleDelete(p.codigoProducto)}> <i className="bi bi-trash"></i> Eliminar</button>
+                      <button type="button" className="btn btn-danger" onClick={()=> handleDelete(p.codigoProducto)}> <i className="bi bi-trash"></i> Eliminar</button>
+                      <button type="button" className="btn btn-primary"><i className="bi bi-pen"></i>Editar</button>
                     </td>
                   </tr>
                 );
