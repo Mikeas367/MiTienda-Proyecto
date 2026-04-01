@@ -15,6 +15,7 @@ public class NuevaVentaInteractor implements INuevaVentaInteractor {
     @Autowired
     private VentaRepositoryPort ventaRepositoryPort;
 
+
     @Override
     public Venta nuevaVenta(List<DetalleVenta> detallesVenta) {
         LocalDateTime fechaActual = LocalDateTime.now();

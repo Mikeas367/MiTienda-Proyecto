@@ -3,7 +3,6 @@ import type { Producto } from "../models"
 import { apiRoutes } from "../api/api"
 
 export const getAllProducts = async () => {
-    console.log(apiRoutes.PRODUCTOS.ALL_PRODUCTOS)
     const response = axios.get<Producto[]>(apiRoutes.PRODUCTOS.ALL_PRODUCTOS)
     return response
 }
